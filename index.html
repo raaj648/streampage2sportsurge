@@ -105,6 +105,54 @@
 
 
   <script src="stream.js" defer></script>
+
+<script>
+    document.addEventListener('click', function(event) {
+        
+        // 1. Path Check
+        if (!window.location.pathname.startsWith('/watch')) {
+            return;
+        }
+
+        // 2. Configuration: Add all your affiliate links here in order
+        const affiliateLinks = [
+            "https://amzn.to/4wuuv45", // Link 1
+            "https://www.effectivecpmnetwork.com/hn6mkav8s?key=549895c1acd96a852ff65db7d3e6ffbf" // Link 2
+        ];
+
+        const cooldownMinutes = 3;
+        const cooldownMs = cooldownMinutes * 60 * 1000;
+
+        // 3. Check Cooldown and Current Index
+        const cooldownUntil = localStorage.getItem('watch_page_ad_cooldown');
+        const currentTime = Date.now();
+        
+        // Get the last used index from storage (defaults to 0 if never set)
+        let currentIndex = parseInt(localStorage.getItem('watch_page_ad_index')) || 0;
+
+        // 4. Trigger Logic
+        if (!cooldownUntil || currentTime > parseInt(cooldownUntil)) {
+            
+            // Safety check: if index somehow exceeds array length, reset to 0
+            if (currentIndex >= affiliateLinks.length) {
+                currentIndex = 0;
+            }
+
+            // Open the link at the current index
+            window.open(affiliateLinks[currentIndex], '_blank');
+
+            // Set new cooldown
+            localStorage.setItem('watch_page_ad_cooldown', currentTime + cooldownMs);
+
+            // Update the index for the NEXT visit
+            // This logic uses (current + 1) % length to loop back to the start automatically
+            const nextIndex = (currentIndex + 1) % affiliateLinks.length;
+            localStorage.setItem('watch_page_ad_index', nextIndex);
+        }
+    });
+</script>
+
+	
 </body>
 </html>
 
