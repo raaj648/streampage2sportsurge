@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page Not Found - Redirecting...</title>
+
+  <!-- Fallback Redirect: This runs if JavaScript is disabled. -->
+  <!-- It waits 0 seconds and then redirects to the homepage. -->
+  <meta http-equiv="refresh" content="0; url=https://sportsurge.pro/">
+
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    a {
+      color: #3a86ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Page Not Found</h1>
+    <p>We're redirecting you to our homepage...</p>
+    <p>If you are not redirected automatically, <a href="https://sportsurge.pro/">click here</a>.</p>
+  </div>
+
+  <!-- Primary Redirect: This is the main script that runs instantly. -->
+  <script>
+    // Get the current path and any search parameters or hash.
+    const fullPath = window.location.pathname + window.location.search + window.location.hash;
+
+    // Redirect to the homepage.
+    // Using replace() is better for the browser's history.
+    window.location.replace('https://sportsurge.pro/');
+  </script>
+
+</body>
+</html>
