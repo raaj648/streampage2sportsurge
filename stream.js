@@ -1,5 +1,20 @@
 const apiURL = "https://streamed.pk/api/matches/all";
 
+const noticeEl = document.getElementById("importantNotice");
+const noticeCloseBtn = document.getElementById("noticeClose");
+
+if (noticeEl) {
+  if (localStorage.getItem("gkNoticeClosed") === "1") {
+    noticeEl.classList.add("hidden");
+  }
+  if (noticeCloseBtn) {
+    noticeCloseBtn.addEventListener("click", () => {
+      noticeEl.classList.add("hidden");
+      localStorage.setItem("gkNoticeClosed", "1");
+    });
+  }
+}
+
 const playerFrame = document.getElementById("playerFrame");
 const channelsListEl = document.getElementById("channelsList");
 const matchTitleEl = document.getElementById("matchTitle");
