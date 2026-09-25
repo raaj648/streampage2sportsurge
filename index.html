@@ -498,23 +498,21 @@ hs.src = ('//s10.histats.com/js15_as.js');
     font-size: 23px;
     line-height: 30px;
     cursor: pointer;
+    z-index: 2;
   }
 
   .gk-popup-close:hover {
     background: rgba(255,255,255,0.18);
   }
 
-  .gk-popup-icon {
-    width: 58px;
-    height: 58px;
-    margin: 0 auto 16px;
+  /* Logo */
+  .gk-popup-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 17px;
     border-radius: 16px;
-    background: #e11d48;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 27px;
-    font-weight: 800;
   }
 
   .gk-popup h2 {
@@ -567,6 +565,12 @@ hs.src = ('//s10.histats.com/js15_as.js');
       border-radius: 16px;
     }
 
+    .gk-popup-logo {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 14px;
+    }
+
     .gk-popup h2 {
       font-size: 21px;
     }
@@ -580,11 +584,22 @@ hs.src = ('//s10.histats.com/js15_as.js');
 <div class="gk-popup-overlay" id="gkPopup">
   <div class="gk-popup">
 
-    <button class="gk-popup-close" id="gkPopupClose" aria-label="Close">
+    <!-- Close button -->
+    <button
+      class="gk-popup-close"
+      id="gkPopupClose"
+      aria-label="Close"
+      type="button"
+    >
       &times;
     </button>
 
-    <div class="gk-popup-icon">GK</div>
+    <!-- GKstreams Logo -->
+    <img
+      src="hero.webp"
+      alt="GKstreams"
+      class="gk-popup-logo"
+    >
 
     <h2>We're Moving to GKstreams</h2>
 
@@ -624,19 +639,22 @@ hs.src = ('//s10.histats.com/js15_as.js');
   // Close button
   closeBtn.addEventListener("click", hidePopup);
 
-  // Optional: clicking outside the popup closes it
+  // Clicking outside the popup closes it
   popup.addEventListener("click", function (e) {
     if (e.target === popup) {
       hidePopup();
     }
   });
 
-  // First popup after 7 seconds
+  // First popup: 7 seconds after page load
   setTimeout(function () {
+
     showPopup();
 
-    // Then every 30 seconds
-    setInterval(showPopup, 30000);
+    // Show again every 30 seconds
+    setInterval(function () {
+      showPopup();
+    }, 30000);
 
   }, 7000);
 
