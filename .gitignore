@@ -1,0 +1,16 @@
+# Secrets / local notes - never upload
+github-details.txt
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor / temp files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.log
+*.tmp
